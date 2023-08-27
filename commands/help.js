@@ -1,50 +1,28 @@
-const { MessageEmbed } = require('discord.js');
-const fs = require('fs');
-const path = require('path');
+// commands/help.js
+const Discord = require('discord.js');
+const config = require('./config.json'); // Adjust the path if needed
 
 module.exports = {
-  name: 'help',
-  description: 'Show available commands and usage instructions',
-  execute(message, args) {
-    const commandFiles = fs.readdirSync(path.join(__dirname)).filter(file => file.endsWith('.js') && file !== 'help.js');
+    name: 'help',
+    description: 'Show a help message with command information.',
+    execute(message, args) {
+        const helpEmbed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('Command List')
+            .setDescription(`Here are the available commands:`)
+            .setThumbnail('https://i.gifer.com/embedded/download/IPql.gif') //  thumbnail image
+            .addFields(
+                { name: `${config.prefix}addvictim`, value: 'Add victim information', inline: false },
+                { name: `${config.prefix}victimpanel`, value: 'Show a list of added victims', inline: false },
+                { name: `${config.prefix}victiminfo {username}`, value: 'View detailed information about a victim', inline: false },
+                { name: `${config.prefix}editvictim {username}`, value: 'Edit information about a victim', inline: false },
+                { name: `${config.prefix}addmission`, value: 'Add a mission', inline: false },
+                { name: `${config.prefix}missionpanel`, value: 'Show a list of added missions', inline: false },
+                { name: `${config.prefix}missioninfo {title}`, value: 'View detailed information about a mission', inline: false },
+                { name: `${config.prefix}editmission {title}`, value: 'Edit information about a mission', inline: false }
+            )
+            .setFooter(`Use ${config.prefix} before each command.`);
 
-    const embed = new MessageEmbed()
-      .setTitle('Bot Commands')
-      .setDescription('Here are the available commands and how to use them:')
-      .setColor('#00FF00');
-
-    for (const file of commandFiles) {
-      const command = require(`./${file}`);
-      embed.addField(`${command.name}`, `${command.description}`);
-    }
-
-    embed.addField(`${emojis[command.name]} ${command.name}`, `${command.description}`);
-
-
-    message.channel.send({ embeds: [embed] });
-  },
-};
-
-
-module.exports = {
-  name: 'help',
-  description: 'Show available commands and usage instructions',
-  execute(message, args) {
-    const commandFiles = fs.readdirSync(path.join(__dirname)).filter(file => file.endsWith('.js') && file !== 'help.js');
-
-    const embed = new MessageEmbed()
-      .setTitle('Bot Commands')
-      .setDescription('Here are the available commands and how to use them:')
-      .setColor('#00FF00');
-
-    for (const file of commandFiles) {
-      const command = require(`./${file}`);
-      embed.addField(`${command.name}`, `${command.description}`);
-    }
-
-    embed.addField(`${emojis[command.name]} ${command.name}`, `${command.description}`);
-
-
-    message.channel.send({ embeds: [embed] });
-  },
+        message.channel.send({ embeds: [helpEmbed] });
+    },
 };
