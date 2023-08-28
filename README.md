@@ -37,7 +37,7 @@ Contributions are welcome! If you have any ideas, bug fixes, or enhancements, fe
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE). **You are not allowed to modify this source code**, This is a repository made for the developers to work together, If this repository is made public anyway, They shouldn't be able to modify the repository, This is an individual Project.
+This project is licensed under the - MIT License will be added as the project is finished[MIT License](LICENSE). **You are not allowed to modify this source code**, This is a repository made for the developers to work together, If this repository is made public anyway, They shouldn't be able to modify the repository, This is an individual Project. 
 
 ---
 
