@@ -12,7 +12,7 @@ module.exports = {
     //create an embed for the message if you call the command
     const searchcalledmessage = new Discord.MessageEmbed()
       .setColor('#0099ff')
-      .setTitle('Send the search term in this channel');
+      .setTitle('Send the search term in this channel')
     
     // send the message
     await  message.channel.send({ embeds: [searchcalledmessage] });
